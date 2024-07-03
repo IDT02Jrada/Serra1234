@@ -1,8 +1,35 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+registered_users = {
+    'ciao': 'ciao',
+}
+
 @app.route('/')
+def login():
+    return render_template('login.html')
+
+@app.route('/login', methods=['POST'])
+def do_login():
+    username = request.form['username']
+    password = request.form['password']
+
+    # Verifica delle credenziali
+    if username in registered_users and registered_users[username] == password:
+        # Credenziali corrette, reindirizzamento alla home
+        return render_template('home.html')
+    else:
+        # Credenziali errate, mostra messaggio di errore
+        error = 'Credenziali errate, Riprova.'
+        return render_template('login.html', error=error)
+
+    
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
+@app.route('/home')
 def home():
     return render_template('home.html')
 
@@ -47,6 +74,7 @@ def sensori():
 @app.route('/storico')
 def storico():
     return render_template('storico.html')
+    
 
 if __name__ == '__main__':
     app.run(debug=True)

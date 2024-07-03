@@ -1,9 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
+    <meta charset="UTF-8">
     <title>Sensori e Attuatori</title>
     <style>
-
-       
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -31,7 +31,7 @@
         }
         .container {
             max-width: 800px;
-            margin: 100px auto 0;
+            margin: 50px auto 0;
         }
         h1 {
             text-align: center;
@@ -44,111 +44,115 @@
             margin-bottom: 10px;
         }
         .item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1fr auto 30px;
             padding: 10px;
             margin-bottom: 10px;
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            align-items: center;
         }
-        .item div {
+        .description {
             display: flex;
             flex-direction: column;
+            gap: 5px;
+        }
+        .description p {
+            margin: 0;
+        }
+        .description span {
+            display: inline-block;
         }
         .status {
-            font-weight: bold;
             text-align: right;
-            display: flex;
-            align-items: center;
+            font-weight: bold;
+            padding-right: 10px;
         }
         .indicator {
             width: 15px;
             height: 15px;
             border-radius: 50%;
-            display: inline-block;
-            margin-right: 10px;
+            margin-left: 10px;
+            justify-self: end;
         }
         .active {
             background-color: green;
-            align-items:center;
-            margin-right: 20px;
         }
         .standby {
             background-color: orange;
-            align-items:center;
-            margin-left: 12px;
         }
         .inactive {
             background-color: red;
-            align-items:center;
-            margin-left: 12px;
         }
     </style>
 </head>
 <body>
-    <div class="nav">
-        <a href="/home.html">Home</a>
-        <a href="/piante.html">Piante</a>
-        <a href="/storico.html">Storico</a>
-    </div>
-    <div class="container">
-        <h1>Sensori e Attuatori</h1>
-
-        <div class="section">
-            <h2>Sensori</h2>
-            <div class="item">
-                <div>
-                    <span><strong>Nome:</strong> DHT11</span>
-                    <span><strong>Descrizione:</strong> Misura la temperatura e l'umidità interna</span>
+    <nav class="nav">
+        <a href="home.html">Home</a>
+        <a href="piante.html">Piante</a>
+        <a href="storico.html">Storico</a>
+    </nav>
+    <main class="container">
+        <h1>Sensoristica</h1>
+        
+        <section class="section">
+            <h2>Sensori Generali</h2>
+            <article class="item">
+                <div class="description">
+                    <p><span><strong>Nome:</strong></span> <span>DHT11 Interno Serra</span></p>
+                    <p><span><strong>Descrizione:</strong></span> <span>Misura la temperatura e l'umidità ambientale</span></p>
                 </div>
-                <div class="status">
-                    <span class="indicator active"></span> Attivo
+                <div class="status"><strong>Attivo</strong></div>
+                <div class="indicator active"></div>
+            </article>
+            <article class="item">
+                <div class="description">
+                    <p><span><strong>Nome:</strong></span> <span>SE482048</span></p>
+                    <p><span><strong>Descrizione:</strong></span> <span>Misura il livello dell'acqua nel serbatoio</span></p>
                 </div>
-            </div>
-            <div class="item">
-                <div>
-                    <span><strong>Nome:</strong> DHT11</span>
-                    <span><strong>Descrizione:</strong> Misura l'umidità del suolo</span>
+                <div class="status"><strong>Inattivo</strong></div>
+                <div class="indicator inactive"></div>
+            </article>
+        </section>
+        
+        <section class="section">
+            <h2>Sensori per pianta</h2>
+            <article class="item">
+                <div class="description">
+                    <p><span><strong>Nome:</strong></span> <span>DHT11 Basilico</span></p>
+                    <p><span><strong>Descrizione:</strong></span> <span>Misura l'umidità del suolo intorno al Basilico</span></p>
                 </div>
-                <div class="status">
-                    <span class="indicator standby"></span> Standby
+                <div class="status"><strong>Standby</strong></div>
+                <div class="indicator standby"></div>
+            </article>
+            <article class="item">
+                <div class="description">
+                    <p><span><strong>Nome:</strong></span> <span>DHT11 Prezzemolo</span></p>
+                    <p><span><strong>Descrizione:</strong></span> <span>Misura l'umidità del suolo intorno al Prezzemolo</span></p>
                 </div>
-            </div>
-            <div class="item">
-                <div>
-                    <span><strong>Nome:</strong> SE482048</span>
-                    <span><strong>Descrizione:</strong> Misura il livello dell'acqua nel serbatoio</span>
+                <div class="status"><strong>Attivo</strong></div>
+                <div class="indicator active"></div>
+            </article>
+            <article class="item">
+                <div class="description">
+                    <p><span><strong>Nome:</strong></span> <span>DHT11 Coriandolo</span></p>
+                    <p><span><strong>Descrizione:</strong></span> <span>Misura l'umidità del suolo intorno al Coriandolo</span></p>
                 </div>
-                <div class="status">
-                    <span class="indicator inactive"></span> Inattivo
+                <div class="status"><strong>Standby</strong></div>
+                <div class="indicator standby"></div>
+            </article>
+            <article class="item">
+                <div class="description">
+                    <p><span><strong>Nome:</strong></span> <span>DHT11 Menta</span></p>
+                    <p><span><strong>Descrizione:</strong></span> <span>Misura l'umidità del suolo intorno alla Menta</span></p>
                 </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Attuatori</h2>
-            <div class="item">
-                <div>
-                    <span><strong>Nome:</strong> Sistema di Irrigazione</span>
-                    <span><strong>Descrizione:</strong> Annaffia le piante</span>
-                </div>
-                <div class="status">
-                    <span class="indicator standby"></span> Standby
-                </div>
-            </div>
-            <div class="item">
-                <div>
-                    <span><strong>Nome:</strong> Quadro di Controllo</span>
-                    <span><strong>Descrizione:</strong> Mantiene temperatura e umidità regolari</span>
-                </div>
-                <div class="status">
-                    <span class="indicator active"></span> Attivo
-                </div>
-            </div>
-        </div>
-    </div>
+                <div class="status"><strong>Standby</strong></div>
+                <div class="indicator standby"></div>
+            </article>
+        </section>
+        
+    </main>
 </body>
 </html>
