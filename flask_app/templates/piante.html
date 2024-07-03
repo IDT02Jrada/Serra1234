@@ -1,51 +1,106 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
+    <meta charset="UTF-8">
     <title>Piante</title>
     <style>
-        .pianta-box {    /* crea e personalizza una scatola attorno alle singole piante, nomi e descrizioni*/
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #919191;
+        }
+        .nav {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .nav a {
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .nav a:hover {
+            background-color: #0056b3;
+        }
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+        .pianta-box {
             border: 1px solid #ccc;
             padding: 20px;
-            margin-bottom: 20px;
-            max-width: calc(35% - 20px);
-            display: inline-block;
-            vertical-align: top;    
-            box-sizing: border-box;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-align: center;
+            border-radius: 8px;
         }
-        .pianta-box img {   /* personalizza posizione e dimensione della foto della pianta*/
-            width: 50%;
-            height: auto;
-            margin-bottom: 10px;
+        .pianta-box img {
+            width: 100%;
+            border-radius: 8px 8px 0 0;
         }
-        .pianta-box h2 {  /* personalizzazione nome della pianta*/
-            margin-top: 0;
+        .pianta-box h2 {
+            margin: 10px 0 0;
+            font-size: 1.2em;
         }
-        .pianta-box p {  /* personalizzazione posizione e dimensione della descrizione pianta */
-            max-width: 50%;
-            overflow-wrap: break-word;
-            text-align: center;
-            padding-left: 120;
+        .pianta-box p, .pianta-box ul {
+            margin: 10px 0 0;
+            font-size: 0.9em;
+            color: #555;
         }
-        .pianta-box ul {  /* personalizzazione di posizione ed avvicinamento dei punti della lista requisiti della pianta */
-            margin-top: 5px;
-            padding-left: 20px;
-            list-style-position: inside; 
+        .pianta-box ul {
+            padding: 0;
+            list-style: none;
+            text-align: left;
+        }
+        .pianta-box ul li {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
+    <nav class="nav">
+        <a href="/home">Home</a>
+        <a href="/sensori">Sensori</a>
+        <a href="/storico">Storico</a>
+    </nav>
     <div style="text-align: center;">
         <h1>Piante</h1>
-        <div>
+        <div class="grid-container">
             {% for pianta in piante %}
             <div class="pianta-box">
-                <img src="{{ url_for('static', filename='piante/pianta' + loop.index|string + '.jpg') }}" alt="{{ pianta.nome }}">  <!-- raccoglimento foto-->
+                <img src="{{ url_for('static', filename='piante/pianta' + loop.index|string + '.jpg') }}" alt="{{ pianta.nome }}">
                 <h2>{{ pianta.nome }}</h2>
                 <p>{{ pianta.descrizione }}</p>
-                <h3>Requisiti:</h3>   <!-- elenco requisiti -->
+                <h3>Requisiti:</h3>
                 <ul>
-                    <li><strong>Temperatura:</strong> {{ pianta.temperatura }}</li>                    
+                    <li><strong>Temperatura:</strong> {{ pianta.temperatura }}</li>
                     <li><strong>Umidità:</strong> {{ pianta.umidita }}</li>
                     <li><strong>Esposizione:</strong> {{ pianta.esposizione }}</li>
                 </ul>
