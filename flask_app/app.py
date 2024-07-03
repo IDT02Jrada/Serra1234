@@ -1,33 +1,45 @@
-from flask import Flask, request, render_template
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
-registered_users = {
-    'ciao': 'ciao',
-}
+registered_users = {'ciao': 'ciao'}
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    error = None
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
 
-@app.route('/login', methods=['POST'])
-def do_login():
-    username = request.form['username']
-    password = request.form['password']
+        if username in registered_users and registered_users[username] == password:
+            return render_template("home.html")
+        else:
+            error = 'Credenziali errate, riprova.'
 
-    # Verifica delle credenziali
-    if username in registered_users and registered_users[username] == password:
-        # Credenziali corrette, reindirizzamento alla home
-        return render_template('home.html')
-    else:
-        # Credenziali errate, mostra messaggio di errore
-        error = 'Credenziali errate, Riprova.'
-        return render_template('login.html', error=error)
+    return render_template('login.html', error=error)
 
-    
-@app.route('/register')
-def register():
-    return render_template('register.html')
+@app.route('/registrazione', methods=['GET', 'POST'])
+def registrazione():
+    error_message = None
+    if request.method == 'POST':
+        # Ottenere i dati dalla form
+        nome = request.form['nome']
+        cognome = request.form['cognome']
+        sesso = request.form['sesso']
+        username = request.form['username']
+        password = request.form['password']
+        conferma_password = request.form['conferma_password']
+
+        # Validazione dei dati (esempio semplice)
+        if password != conferma_password:
+            error_message = "Le password non corrispondono."
+        elif username in registered_users:
+            error_message = "Username già in uso. Scegli un altro username."
+        else:
+            # Salva i dati utente nel database o in memoria
+            registered_users[username] = password
+            # Reindirizzamento alla pagina di login dopo la registrazione
+            return render_template('login.html')
 
 @app.route('/home')
 def home():

@@ -1,83 +1,36 @@
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
-    <title>HOME</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f9;
-        }
-        .container {
-            text-align: center;
-            max-width: 600px;
-        }
-        .button {
-            display: block;
-            margin: 10px 0;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: white;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .stat-item {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .stat-item h2 {
-            margin: 0 0 10px;
-            font-size: 1.2em;
-        }
-        .stat-item p {
-            margin: 0;
-            font-size: 1em;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 </head>
 <body>
     <div class="container">
-        <div class="stats">
-            <div class="stat-item">
+        <div class="dashboard">
+            <div class="dashboard-item">
                 <h2>Temperatura Esterna</h2>
-                <p>25°C</p> <!-- Valore di esempio -->
+                <p>25°C</p>
             </div>
-            <div class="stat-item">
+            <div class="dashboard-item">
                 <h2>Umidità Esterna</h2>
-                <p>60%</p> <!-- Valore di esempio -->
+                <p>60%</p>
             </div>
-            <div class="stat-item">
+            <div class="dashboard-item">
                 <h2>Temperatura Interna</h2>
-                <p>22°C</p> <!-- Valore di esempio -->
+                <p>22°C</p>
             </div>
-            <div class="stat-item">
+            <div class="dashboard-item">
                 <h2>Umidità Interna</h2>
-                <p>55%</p> <!-- Valore di esempio -->
+                <p>55%</p>
             </div>
-            <div class="stat-item">
+            <div class="dashboard-item">
                 <h2>Umidità del Terreno</h2>
-                <p>40%</p> <!-- Valore di esempio -->
+                <p>40%</p>
             </div>
-            <div class="stat-item">
+            <div class="dashboard-item">
                 <h2>Livello d'Acqua del Serbatoio</h2>
-                <p>75%</p> <!-- Valore di esempio -->
+                <p>75%</p>
             </div>
         </div>
         
