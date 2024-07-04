@@ -7,17 +7,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Login</h1>
-        <form action="/login" method="POST">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
+        <h1>Accedi</h1>
+        <form method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
             <button type="submit">Accedi</button>
         </form>
-        <div class="register-link">
-            Non hai un account? <a href="/registrazione">Registrati</a>.
-        </div>
         {% if error %}
-        <div class="error-message">{{ error }}</div>
+            <p class="error-message show">{{ error }}</p>
         {% endif %}
     </div>
 </body>

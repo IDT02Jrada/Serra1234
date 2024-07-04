@@ -1,18 +1,19 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-registered_users = {'ciao': 'ciao'}
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
+    valid_credentials = {"username": "ciao", "password": "qwerty"}
     error = None
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
 
-        if username in registered_users and registered_users[username] == password:
-            return render_template("home.html")
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        if username == valid_credentials['username'] and password == valid_credentials['password']:
+            return render_template('home.html')
         else:
             error = 'Credenziali errate, riprova.'
 
