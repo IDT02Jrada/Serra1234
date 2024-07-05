@@ -10,7 +10,7 @@ def login():
     return render_template("login.html")
 
 @app.route('/registrazione', methods=['GET', 'POST'])
-def register():
+def registrazione():
     if request.method == 'POST':
         nome = request.form['nome']
         cognome = request.form['cognome']
