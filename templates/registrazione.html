@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='registrazione.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="">
+            <h1>Registrazione</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Nome" required>
+                <i class='bx bx-rename' ></i>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Cognome" required>
+                <i class='bx bx-rename' ></i>
+            </div>
+            <div class="select-container">
+                <select class="select-box">
+                    <option value="" disabled selected>Seleziona il sesso</option>
+                    <option value="maschio">Maschio</option>
+                    <option value="femmina">Femmina</option>
+                    <option value="altro">Altro</option>
+                </select>
+                <i class='bx bxs-down-arrow' ></i>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+            <button type="submit" class="btn">Registrati</button>
+            <div class="login-link">
+                <p>Hai già un account? <a href="/login">Accedi</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
